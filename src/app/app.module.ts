@@ -6,22 +6,35 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NbThemeModule, NbLayoutModule, NbSidebarModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
-import { LayoutComponent } from './admin/layout/layout.component';
+import { LayoutComponent as AdminLayout } from './admin/layout/layout.component';
+import { LayoutComponent as UserLayout } from './user/layout/layout.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { NebularModule } from './modules/nebular/nebular.module';
 import { SigninComponent } from './authentication/signin/signin.component';
 import { SignupComponent } from './authentication/signup/signup.component';
 import { ResetPasswordComponent } from './authentication/reset-password/reset-password.component';
-
+import { AddBlogComponent } from './user/add-blog/add-blog.component';
+import { LayoutComponent } from './user/layout/layout.component';
+import { LayoutComponent as BlogLayoutComponent } from './blog/layout/layout.component';
+import { HeaderComponent as BlogHeaderComponent } from './blog/header/header.component';
+import { BlogHomeComponent } from './blog/blog-home/blog-home.component';
+import { ViewBlogComponent } from './blog/view-blog/view-blog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LayoutComponent,
+    AdminLayout,
+    UserLayout,
     DashboardComponent,
     SigninComponent,
     SignupComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    AddBlogComponent,
+    LayoutComponent,
+    BlogLayoutComponent,
+    BlogHeaderComponent,
+    BlogHomeComponent,
+    ViewBlogComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,9 +45,9 @@ import { ResetPasswordComponent } from './authentication/reset-password/reset-pa
     NbEvaIconsModule,
     NbSidebarModule.forRoot(),
 
-    NebularModule
+    NebularModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
