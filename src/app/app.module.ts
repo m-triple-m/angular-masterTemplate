@@ -19,6 +19,12 @@ import { LayoutComponent as BlogLayoutComponent } from './blog/layout/layout.com
 import { HeaderComponent as BlogHeaderComponent } from './blog/header/header.component';
 import { BlogHomeComponent } from './blog/blog-home/blog-home.component';
 import { ViewBlogComponent } from './blog/view-blog/view-blog.component';
+import { CreateBlogComponent } from './blog/create-blog/create-blog.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -35,6 +41,7 @@ import { ViewBlogComponent } from './blog/view-blog/view-blog.component';
     BlogHeaderComponent,
     BlogHomeComponent,
     ViewBlogComponent,
+    CreateBlogComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,6 +51,12 @@ import { ViewBlogComponent } from './blog/view-blog/view-blog.component';
     NbLayoutModule,
     NbEvaIconsModule,
     NbSidebarModule.forRoot(),
+    MatInputModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatSelectModule,
+    HttpClientModule,
 
     NebularModule,
   ],

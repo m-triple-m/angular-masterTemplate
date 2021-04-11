@@ -3,19 +3,21 @@ import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { LayoutComponent as AdminLayout } from './admin/layout/layout.component';
 import { BlogHomeComponent } from './blog/blog-home/blog-home.component';
+import { CreateBlogComponent } from './blog/create-blog/create-blog.component';
 import { LayoutComponent as BlogLayoutComponent } from './blog/layout/layout.component';
 import { ViewBlogComponent } from './blog/view-blog/view-blog.component';
 import { AddBlogComponent } from './user/add-blog/add-blog.component';
 import { LayoutComponent as UserLayout } from './user/layout/layout.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/blog', pathMatch: 'full' },
+  { path: '', redirectTo: '/blog/create', pathMatch: 'full' },
   {
     path: 'blog',
     component: BlogLayoutComponent,
     children: [
       { path: 'home', component: BlogHomeComponent },
       { path: 'view', component: ViewBlogComponent },
+      { path: 'create', component: CreateBlogComponent },
     ],
   },
 
