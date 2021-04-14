@@ -1,9 +1,22 @@
 <nb-layout>
     <nb-layout-header>
+        <nb-user right
+             size="large"
+             name="John Doe"
+             title="Engineer"
+             [picture]="url+currentUser.avatar">
+        </nb-user>  
+
+    <p class="link" (click)="userService.logout()" class="h6" style="margin-left: 2rem;cursor: pointer;">Logout</p>
 
     </nb-layout-header>
-    <nb-layout-column>
+    <nb-sidebar>
+        <nb-menu [items]="sidebarItems">
 
+        </nb-menu>
+    </nb-sidebar>
+    <nb-layout-column>
+        <router-outlet></router-outlet>
     </nb-layout-column>
     <nb-layout-footer>
 

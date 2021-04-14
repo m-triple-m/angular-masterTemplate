@@ -1,0 +1,39 @@
+<div class="col-md-11 mx-auto mt-5">
+
+    <nb-card accent="primary">
+        <nb-card-header>
+            <p class="h4">Manage Your Blogs</p>
+        </nb-card-header>
+        <nb-card-body>
+            <div class="row mt-4">
+                <div class="col-3">
+                    <p>Full Name</p>
+                </div>
+                <div class="col-3">
+                    <p>{{currentUser.fullname}}</p>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-3">
+                    <p>Email</p>
+                </div>
+                <div class="col-3">
+                    <p>{{currentUser.email}}</p>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-3">
+                    <p>Password</p>
+                </div>
+                <div class="col-3">
+                    <p>{{currentUser.password}}</p>
+                </div>
+            </div>
+
+            <button nbButton status="primary" hero class="mt-5">Update</button>
+
+        </nb-card-body>
+    </nb-card>
+</div>

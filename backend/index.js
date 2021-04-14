@@ -3,44 +3,18 @@ const api_config = require('./config');
 const app = express();
 const port = api_config.port;
 const userRouter = require('./routers/userManager');
+const utilRouter = require('./routers/util');
+const blogRouter = require('./routers/blogManager');
+const cors = require('cors');
+
+app.use(express.json());
+app.use(cors());
 
 app.use('/user', userRouter);
+app.use('/blog', blogRouter);
+app.use('/util', utilRouter);
 
-const Model = require('./models/userModel');
-
-app.get('/getuser', (req, res) => {
-    res.send('user request at index');
-})
-
-app.post('/add', (req, res) => {
-
-    let mydata = {
-        username: 'mewtwo',
-        email: 'mewtwo@poke.com',
-        password: '1234',
-        age: 50
-    };
-
-    new Model(mydata).save()
-        .then(data => {
-            console.log('data saved');
-            res.send('success');
-        })
-        .catch(err => {
-            console.error(err);
-            res.json(err);
-        })
-
-})
-
-app.get('/home', (req, res) => {
-    res.send('request processed at home');
-})
-
-app.get('/add', (req, res) => {
-    console.log('an add request');
-    res.send('got an add request');
-})
+app.use(express.static('./uploads'))
 
 app.listen(port, () => {
     console.log('Hurray!!!!! server started on port ' + port);

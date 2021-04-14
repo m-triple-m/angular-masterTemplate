@@ -4,7 +4,12 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NbThemeModule, NbLayoutModule, NbSidebarModule } from '@nebular/theme';
+import {
+  NbThemeModule,
+  NbLayoutModule,
+  NbSidebarModule,
+  NbMenuModule,
+} from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { LayoutComponent as AdminLayout } from './admin/layout/layout.component';
 import { LayoutComponent as UserLayout } from './user/layout/layout.component';
@@ -13,9 +18,9 @@ import { NebularModule } from './modules/nebular/nebular.module';
 import { SigninComponent } from './authentication/signin/signin.component';
 import { SignupComponent } from './authentication/signup/signup.component';
 import { ResetPasswordComponent } from './authentication/reset-password/reset-password.component';
-import { AddBlogComponent } from './user/add-blog/add-blog.component';
 import { LayoutComponent } from './user/layout/layout.component';
 import { LayoutComponent as BlogLayoutComponent } from './blog/layout/layout.component';
+import { LayoutComponent as AppLayoutComponent } from './authentication/layout/layout.component';
 import { HeaderComponent as BlogHeaderComponent } from './blog/header/header.component';
 import { BlogHomeComponent } from './blog/blog-home/blog-home.component';
 import { ViewBlogComponent } from './blog/view-blog/view-blog.component';
@@ -25,6 +30,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { MarkdownModule } from 'ngx-markdown';
+import { ManageBlogComponent } from './user/manage-blog/manage-blog.component';
+import { ProfileComponent } from './user/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -35,13 +44,15 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     SigninComponent,
     SignupComponent,
     ResetPasswordComponent,
-    AddBlogComponent,
     LayoutComponent,
     BlogLayoutComponent,
     BlogHeaderComponent,
     BlogHomeComponent,
     ViewBlogComponent,
     CreateBlogComponent,
+    AppLayoutComponent,
+    ManageBlogComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,8 +68,10 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     FormsModule,
     MatSelectModule,
     HttpClientModule,
-
     NebularModule,
+    NbMenuModule.forRoot(),
+    SweetAlert2Module.forRoot(),
+    MarkdownModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

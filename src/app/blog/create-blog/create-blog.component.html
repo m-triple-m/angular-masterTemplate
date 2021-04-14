@@ -11,16 +11,21 @@
                     <input type="text" matInput formControlName="title">
                 </mat-form-field>
 
-                <label for="" class="mt-2">Display Image</label>
-                <input type="file">
+                <mat-form-field appearance="fill" class="mt-3 col-12">
+                    <mat-label>Blog Description</mat-label>
+                    <input type="text" matInput formControlName="desc">
+                </mat-form-field>
+
+                <label for="" class="mt-3">Display Image</label>
+                <input type="file" class="form-control" (change)="uploadImage($event)">
+                <img [src]="imgURL" alt="" *ngIf="imgURL" class="img-fluid">
+
 
                 <mat-form-field appearance="fill" class="mt-3 col-12">
                     <mat-label>Tags</mat-label>
-                    <mat-select formControlName="tags">
-                        <option value="">A</option>
-                        <option value="">B</option>
-                        <option value="">C</option>
-                    </mat-select>
+                    <mat-select formControlName="tags" multiple>
+                        <mat-option *ngFor="let tag of tagslist" [value]="tag">{{tag}}</mat-option>
+                      </mat-select>
                 </mat-form-field>
 
             </form>

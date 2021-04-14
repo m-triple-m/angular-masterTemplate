@@ -2,6 +2,7 @@ const mongoose = require('../connection');
 
 const schema = mongoose.Schema({
     title: String,
+    desc: String,
     author: { type: mongoose.Types.ObjectId, ref: 'Users' },
     created: Date,
     thumb: String,
