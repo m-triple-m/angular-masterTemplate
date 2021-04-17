@@ -15,7 +15,7 @@ import { ManageBlogComponent } from './user/manage-blog/manage-blog.component';
 import { ProfileComponent } from './user/profile/profile.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/app/signup', pathMatch: 'full' },
+  { path: '', redirectTo: '/blog/home', pathMatch: 'full' },
   {
     path: 'app',
     component: AppLayoutComponent,

@@ -3687,3 +3687,7 @@ body.is-menu-visible #menu {
     padding: 1.5em;
   }
 }
+
+.site-title {
+  font-size: 2rem;
+}
