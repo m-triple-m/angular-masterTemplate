@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import * as SimpleMDE from 'simplemde';
 import { BlogService } from 'src/app/services/blog.service';
 import { UserService } from 'src/app/services/user.service';
@@ -18,31 +19,50 @@ export class CreateBlogComponent implements OnInit {
   blogImage: any;
   erroMsg: any;
   imgURL: any;
+  formReady = false;
   tagslist = ['tag a', 'tag b', 'tag c'];
 
   constructor(
     private fb: FormBuilder,
     private blogService: BlogService,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router,
+    private activated: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this.currentUser = this.userService.currentUser;
     this.simplemde = new SimpleMDE({ element: document.getElementById('md') });
-    this.initBlogForm();
+
+    if (this.blogService.update) {
+      let blogId = this.activated.snapshot.paramMap.get('id');
+      this.blogService.getBlogById(blogId).subscribe((blogData) => {
+        console.log(blogData);
+        this.initBlogForm(blogData);
+        this.markdown = blogData['data'].body;
+      });
+    } else {
+      this.initBlogForm();
+    }
   }
 
-  initBlogForm() {
-    this.blogForm = this.fb.group({
-      title: '',
-      desc: '',
-      author: this.currentUser._id,
-      created: new Date(),
-      data: {},
-      likes: 0,
-      comments: null,
-      tags: null,
-    });
+  initBlogForm(data = null) {
+    if (data) {
+      this.blogForm = data;
+    } else {
+      this.blogForm = this.fb.group({
+        title: '',
+        desc: '',
+        author: this.currentUser._id,
+        created: new Date(),
+        data: {},
+        likes: 0,
+        comments: null,
+        tags: null,
+      });
+    }
+
+    this.formReady = true;
   }
 
   uploadImage(event) {
@@ -92,8 +112,15 @@ export class CreateBlogComponent implements OnInit {
     data['liked_users'] = [this.currentUser._id];
     formdata.likes = 1;
     formdata.data = data;
-    this.blogService.addBlog(formdata).subscribe((res) => {
-      console.log(res);
+    this.blogService.addBlog(formdata).subscribe((blogData) => {
+      console.log(blogData);
+      Swal.fire({
+        title: 'Awesome',
+        text: 'Your Blog has been Successfully Published',
+        icon: 'success',
+      }).then(() => {
+        this.router.navigate(['/blog/view', blogData['_id']]);
+      });
     });
   }
 }

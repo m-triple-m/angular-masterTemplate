@@ -16,7 +16,7 @@ export class ViewBlogComponent implements OnInit {
   constructor(
     private blogService: BlogService,
     private act_route: ActivatedRoute,
-    private userservice: UserService
+    public userservice: UserService
   ) {}
 
   ngOnInit(): void {

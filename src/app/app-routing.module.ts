@@ -13,6 +13,9 @@ import { ViewBlogComponent } from './blog/view-blog/view-blog.component';
 import { LayoutComponent as UserLayout } from './user/layout/layout.component';
 import { ManageBlogComponent } from './user/manage-blog/manage-blog.component';
 import { ProfileComponent } from './user/profile/profile.component';
+import { AdminGuard } from './guards/admin.guard';
+import { LoginGuard } from './guards/login.guard';
+import { ManageUsersComponent } from './admin/manage-users/manage-users.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/blog/home', pathMatch: 'full' },
@@ -38,18 +41,23 @@ const routes: Routes = [
   {
     path: 'admin',
     component: AdminLayout,
+    canActivate: [AdminGuard],
     children: [
       { path: '', component: DashboardComponent },
       { path: 'dashboard', component: DashboardComponent },
+      { path: 'manageuser', component: ManageUsersComponent },
     ],
   },
   {
     path: 'user',
     component: UserLayout,
+    canActivate: [LoginGuard],
     children: [
       { path: '', component: ProfileComponent },
       { path: 'manageblog', component: ManageBlogComponent },
       { path: 'profile', component: ProfileComponent },
+      { path: 'newblog', component: CreateBlogComponent },
+      { path: 'updateblog/:id', component: CreateBlogComponent },
     ],
   },
 ];

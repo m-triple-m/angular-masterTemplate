@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NbSidebarService } from '@nebular/theme';
+import { UserService } from 'src/app/services/user.service';
+import { app_config } from 'src/config';
 
 @Component({
   selector: 'app-layout',
@@ -7,7 +9,11 @@ import { NbSidebarService } from '@nebular/theme';
   styleUrls: ['./layout.component.css'],
 })
 export class LayoutComponent implements OnInit {
-  constructor(private sidebarservice: NbSidebarService) {}
+  url = app_config.api_url + '/';
+  constructor(
+    private sidebarservice: NbSidebarService,
+    public userservice: UserService
+  ) {}
 
   ngOnInit(): void {
     this.toggleSidebar();

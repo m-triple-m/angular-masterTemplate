@@ -1,6 +1,134 @@
-<nb-layout>
-    <nb-layout-column>
-        <button nbButton>Thats a button</button>
+<div class="row">
+    <div class="col-md-6">
+        <nb-card accent="danger">
+            <nb-card-body>
+                <div class="row">
+                    <div class="col-3">
+                        <div class="icon-container">
+                            <nb-icon icon="people" style="font-size: 5rem;width: 100%;" status="control"></nb-icon>
+                        </div>
+                    </div>
+                    <div class="col-9">
+                        hi here
+                    </div>
+                </div>
+            </nb-card-body>
+        </nb-card>
+    </div>
 
-    </nb-layout-column>
-</nb-layout>
+    <div class="col-md-6">
+        <nb-card accent="danger">
+            <nb-card-body>
+                <div class="row">
+                    <div class="col-3">
+                        <div class="icon-container">
+                            <nb-icon icon="activity" style="font-size: 5rem;width: 100%;" status="control"></nb-icon>
+                        </div>
+                    </div>
+                    <div class="col-9">
+                        hi here
+                    </div>
+                </div>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-5">
+        <div class="row">
+            <div class="col-md-6">
+                
+                <nb-flip-card>
+                    <nb-card-front>
+                      <nb-card accent="success">
+                        <nb-card-header>
+                            <h5>Card Front</h5>
+                        </nb-card-header>
+                        <nb-card-body>
+                          A nebula is an interstellar cloud of dust, hydrogen,
+                          helium and other ionized gases.
+                          Originally, nebula was a name for
+                        </nb-card-body>
+                      </nb-card>
+                    </nb-card-front>
+                    <nb-card-back>
+                      <nb-card>
+                        <nb-card-body>
+                          A nebula is an interstellar cloud of dust, hydrogen,
+                          helium and other ionized gases.
+                          Originally, nebula was a name for
+                          any diffuse astronomical object,
+                          including galaxies beyond the Milky Way.
+                        </nb-card-body>
+                      </nb-card>
+                    </nb-card-back>
+                  </nb-flip-card>
+            </div>
+
+            <div class="col-md-6">
+                
+                <nb-flip-card>
+                    <nb-card-front>
+                      <nb-card accent="success">
+                        <nb-card-header>
+                            <h5>Card Front</h5>
+                        </nb-card-header>
+                        <nb-card-body>
+                          A nebula is an interstellar cloud of dust, hydrogen,
+                          helium and other ionized gases.
+                          Originally, nebula was a name for
+                        </nb-card-body>
+                      </nb-card>
+                    </nb-card-front>
+                    <nb-card-back>
+                      <nb-card>
+                        <nb-card-body>
+                          A nebula is an interstellar cloud of dust, hydrogen,
+                          helium and other ionized gases.
+                          Originally, nebula was a name for
+                          any diffuse astronomical object,
+                          including galaxies beyond the Milky Way.
+                        </nb-card-body>
+                      </nb-card>
+                    </nb-card-back>
+                  </nb-flip-card>
+            </div>
+        </div>
+        
+        <nb-card accent="success">
+            <nb-card-header>
+                <h4>Small Card</h4>
+            </nb-card-header>
+            <nb-card-body>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero tenetur, nobis vel nihil incidunt recusandae atque iste sint perferendis explicabo earum rem, corporis ratione. Incidunt reprehenderit quia ipsum. Rem voluptatem ducimus quae earum quas vel? Unde consectetur tempora eveniet voluptatem eaque dolor doloribus nisi, odio, mollitia cum nobis id nemo ex expedita assumenda rerum magni error tempore molestias. Voluptate praesentium necessitatibus consequuntur possimus dolorem veritatis exercitationem ex maxime eligendi alias in perspiciatis repellat quae laudantium officia velit dolorum cum, mollitia, nisi qui sit blanditiis! Quaerat aut vel, architecto facilis quasi tempore reiciendis, quod quas asperiores eaque, harum ipsam cupiditate dolorem!
+            </nb-card-body>
+        </nb-card>
+    </div>
+    <div class="col-md-7">
+        <nb-card accent="success" *ngIf="userDataReady">
+            <nb-card-header>
+                <h4>Big Card</h4>
+            </nb-card-header>
+            <nb-card-body>
+                <canvas baseChart width="400" height="400"
+                [datasets]="userChartData.plotData"
+                [labels]="userChartData.labels"
+                [options]="userChartData.options"
+                [legend]="userChartData.legend"
+                [chartType]="userChartData.chartType">
+            </canvas>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>
+
+<nb-card accent="success">
+    <nb-card-header>
+        <h4>Big Card</h4>
+    </nb-card-header>
+    <nb-card-body>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime laboriosam, commodi fugit qui porro, soluta quaerat incidunt illum vel obcaecati nesciunt. Reprehenderit deleniti, adipisci et debitis eius dolorum maxime quos iure illum velit iusto, eveniet sit architecto error officiis aliquam nostrum ut vitae ea hic? Odit et alias corrupti velit quae voluptate ut deserunt maxime aliquid delectus ex quam consequuntur, fuga quod! Facere reiciendis provident maxime, rem at consequatur quasi nemo nisi mollitia! Ratione quam tempora velit, veniam atque minima? Itaque, odit magni possimus sapiente a quaerat eveniet dignissimos? Esse impedit delectus dignissimos enim eaque explicabo labore quas accusamus sunt cupiditate optio veritatis, alias exercitationem, placeat similique magnam? Dolorum et sed rerum distinctio saepe sunt deleniti officia illo deserunt illum beatae hic, recusandae aspernatur, consequuntur ipsam repellat maxime esse dolores similique incidunt! Quam unde, suscipit fuga enim illum ratione consectetur voluptas possimus a eius vero aliquam est. Facilis explicabo distinctio at sunt cumque! Repudiandae praesentium a debitis fuga quidem esse nihil ullam facere eum, molestias nemo voluptates corrupti commodi sapiente impedit ratione rerum. Vel quis exercitationem recusandae porro aspernatur tempora blanditiis distinctio ex, saepe minima consequuntur ut similique soluta, molestiae aliquam magni ducimus cumque, iste voluptatem consectetur error vero. At.
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis qui repudiandae sequi esse aut, voluptatibus labore provident excepturi explicabo rem ratione iure, minima ducimus hic ut tenetur! Animi, ad numquam consectetur neque voluptas hic praesentium molestias pariatur repudiandae quis ratione perspiciatis veniam placeat veritatis aut magni voluptatem nulla quos commodi aliquam libero. Fugit eligendi possimus dignissimos consequatur quos asperiores expedita, perspiciatis, omnis ea assumenda aperiam officia eaque, quod magnam. Provident quidem maiores nulla beatae facilis distinctio quasi! Itaque ex quos ducimus ea provident repudiandae excepturi molestiae eaque quisquam, optio tempore reiciendis voluptatum repellat porro sunt quam sapiente eius doloremque suscipit, autem animi. Consequatur tempora corporis in, molestias sit dolore laudantium assumenda. Totam corrupti esse, necessitatibus deleniti veniam voluptas. Facilis, asperiores? Illum, doloremque iste in deserunt alias corrupti assumenda, excepturi non officia beatae aperiam expedita fuga ipsa laudantium perspiciatis animi perferendis eum. Consequuntur ipsa, voluptatibus facere quidem explicabo et. Exercitationem, veritatis!
+    </nb-card-body>
+</nb-card>

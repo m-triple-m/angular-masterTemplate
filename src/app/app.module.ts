@@ -34,6 +34,9 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { MarkdownModule } from 'ngx-markdown';
 import { ManageBlogComponent } from './user/manage-blog/manage-blog.component';
 import { ProfileComponent } from './user/profile/profile.component';
+import { NgsRevealModule } from 'ngx-scrollreveal';
+import { ManageUsersComponent } from './admin/manage-users/manage-users.component';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -53,11 +56,13 @@ import { ProfileComponent } from './user/profile/profile.component';
     AppLayoutComponent,
     ManageBlogComponent,
     ProfileComponent,
+    ManageUsersComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ChartsModule,
     NbThemeModule.forRoot({ name: 'default' }),
     NbLayoutModule,
     NbEvaIconsModule,
@@ -72,6 +77,7 @@ import { ProfileComponent } from './user/profile/profile.component';
     NbMenuModule.forRoot(),
     SweetAlert2Module.forRoot(),
     MarkdownModule.forRoot(),
+    NgsRevealModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

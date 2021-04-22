@@ -43,7 +43,7 @@ router.post('/add', (req, res) => {
     new Model(req.body).save()
         .then(data => {
             console.log('blog data saved');
-            res.status(200).json({ message: 'success' });
+            res.status(200).json(data);
         })
         .catch(err => {
             console.error(err);
@@ -56,6 +56,18 @@ router.put('/updatelike/:id', (req, res) => {
         .then(data => {
             console.log('blog likes updated');
             res.status(200).json({ message: 'success' });
+        })
+        .catch(err => {
+            console.error(err);
+            res.status(500).json(err);
+        })
+})
+
+router.delete('/delete/:id', (req, res) => {
+    Model.findByIdAndDelete(req.params.id)
+        .then(data => {
+            console.log('blog deleted');
+            res.status(200).json({ message: 'deleted' });
         })
         .catch(err => {
             console.error(err);

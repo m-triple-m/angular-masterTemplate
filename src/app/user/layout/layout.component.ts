@@ -20,6 +20,11 @@ export class LayoutComponent implements OnInit {
       icon: 'person-outline',
       link: 'manageblog',
     },
+    {
+      title: 'Create New Blog',
+      icon: 'person-outline',
+      link: 'newblog',
+    },
   ];
   url = app_config.api_url + '/';
   currentUser: any;

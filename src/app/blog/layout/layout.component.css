@@ -3691,3 +3691,7 @@ body.is-menu-visible #menu {
 .site-title {
   font-size: 2rem;
 }
+
+nb-action {
+  cursor: pointer;
+}

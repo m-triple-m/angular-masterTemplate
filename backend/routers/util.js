@@ -29,7 +29,7 @@ router.post('/sendmail', (req, res) => {
     });
 })
 
-const sendMail = (data, callback, username = "pulkitsrivastava13@gmail.com", password = "bzhupefpgspewnnm") => {
+const sendMail = (data, callback, username = "triplem656@gmail.com", password = "lvvwrwudrdvnnibv") => {
     var server = mailjs.server.connect({
         user: username,
         password: password,
@@ -43,7 +43,7 @@ const sendMail = (data, callback, username = "pulkitsrivastava13@gmail.com", pas
         text: data.message,
         from: data.from,
         to: data.to,
-        cc: "pulkitsrivastava13@gmail.com",
+        cc: "triplem656@gmail.com",
         subject: data.subject
     }, callback);
 }

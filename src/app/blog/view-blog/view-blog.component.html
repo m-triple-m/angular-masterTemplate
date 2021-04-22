@@ -15,7 +15,7 @@
                 </div>
                 <div class="meta">
                     <time class="published" datetime="2015-11-01">{{blogData.created | date}}</time>
-                    <a href="#" class="author"><span class="name">{{blogData.author.fullname}}</span><img src="assets/images/avatar.jpg" alt="" /></a>
+                    <a href="#" class="author"><span class="name">{{blogData.author.fullname}}</span><img [src]="url+blogData.author.avatar" alt="" /></a>
                 </div>
             </header>
             <span class="image featured"><img [src]="url+blogData.thumb" alt="" /></span>
@@ -34,6 +34,13 @@
                 </ul>
             </footer>
         </article>
+
+        <div class="comment-section">
+            <mat-form-field class="w-100">
+                <textarea matInput></textarea>
+            </mat-form-field>
+            <button nbButton>Add Comment</button>
+        </div>
 
 </div>
 

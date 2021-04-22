@@ -8,6 +8,7 @@ import {
   NbSidebarModule,
   NbUserModule,
   NbActionsModule,
+  NbSearchModule,
 } from '@nebular/theme';
 
 @NgModule({
@@ -20,6 +21,7 @@ import {
     NbUserModule,
     NbIconModule,
     NbActionsModule,
+    NbSearchModule,
   ],
   imports: [CommonModule],
 })

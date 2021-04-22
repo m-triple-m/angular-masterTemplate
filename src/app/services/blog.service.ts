@@ -6,6 +6,7 @@ import { app_config } from 'src/config';
   providedIn: 'root',
 })
 export class BlogService {
+  update = false;
   url = app_config.api_url + '/blog';
   constructor(private http: HttpClient) {}
 
@@ -19,6 +20,14 @@ export class BlogService {
 
   getBlogsByAuthor(id) {
     return this.http.get(this.url + '/getbyauthor/' + id);
+  }
+
+  getBlogById(id) {
+    return this.http.get(this.url + '/getbyid/' + id);
+  }
+
+  deleteBlog(id) {
+    return this.http.delete(this.url + '/delete/' + id);
   }
 
   uploadImage(file: any) {

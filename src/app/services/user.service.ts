@@ -27,6 +27,18 @@ export class UserService {
     return this.http.get(this.url + '/getbyemail/' + email);
   }
 
+  deleteUser(id) {
+    return this.http.delete(this.url + '/delete/' + id);
+  }
+
+  getAll() {
+    return this.http.get(this.url + '/getall');
+  }
+
+  update(id: String, data: Object) {
+    return this.http.put(this.url + '/update/' + id, data);
+  }
+
   uploadAvatar(file: any) {
     return this.http.post(app_config.api_url + '/util/addimg', file);
   }
@@ -34,5 +46,7 @@ export class UserService {
   logout() {
     sessionStorage.removeItem('user');
     this.router.navigate(['/app/signin']);
+    this.currentUser = null;
+    this.loggedin = false;
   }
 }
