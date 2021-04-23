@@ -20,9 +20,9 @@
             </header>
             <span class="image featured"><img [src]="url+blogData.thumb" alt="" /></span>
             
-            <p class="mt-5 mb-5">
-                <markdown [data]="blogData.data.body"></markdown>
-            </p>
+            <div id="blog-body">
+                <markdown id="blog-body" style="font-size: 1.5em;" [data]="blogData.data.body"></markdown>
+            </div>
 
             <footer>
                 <ul class="stats">
@@ -46,7 +46,7 @@
             <div class="comment-list">
                 <div class="comment" *ngFor="let comment of blogData.comments">
                     <h2>{{comment.text}}</h2>
-                    <p>{{comment.creaed | date}}</p>
+                    <p>{{comment.created | date}}</p>
                 </div>
             </div>
 

@@ -7,7 +7,7 @@ import { app_config } from 'src/config';
 @Component({
   selector: 'app-view-blog',
   templateUrl: './view-blog.component.html',
-  styleUrls: ['../layout/layout.component.css'],
+  styleUrls: ['../layout/layout.component.css', './view-blog.component.css'],
 })
 export class ViewBlogComponent implements OnInit {
   blogData: any;

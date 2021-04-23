@@ -49,4 +49,13 @@ export class UserService {
     this.currentUser = null;
     this.loggedin = false;
   }
+
+  refreshUser() {
+    this.http
+      .get(this.url + '/getbyid/' + this.currentUser._id)
+      .subscribe((userdata) => {
+        this.currentUser = userdata;
+        sessionStorage.setItem('user', JSON.stringify(userdata));
+      });
+  }
 }

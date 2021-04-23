@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
+import * as CanvasJS from '../../../assets/canvasjs.min';
+import * as dl from 'datalib';
+import { Observable } from 'rxjs';
+import { BlogService } from 'src/app/services/blog.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,79 +11,136 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-  userChartData;
-  userDataReady = false;
-  constructor(public userService: UserService) {}
+  usersList: any;
+  blogsList: any;
+  constructor(
+    public userService: UserService,
+    private blogservice: BlogService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getUsers();
+    this.getBlogs();
+  }
 
-  fetchUserData() {
+  // getSellers() {
+  //   this.sellerservice.getAllSellers().subscribe(data => {
+  //     console.log(data);
+  //     this.sellers = data;
+  //   })
+  // }
+
+  getUsers() {
     this.userService.getAll().subscribe((data) => {
-      this.prepareUserData(data);
+      console.log(data);
+      this.usersList = data;
+      this.prepareRegData(this.usersList);
     });
   }
 
-  prepareUserData(data) {
-    this.userChartData.ploData = [
-      { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
-      { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B' },
-      {
-        data: [180, 480, 770, 90, 1000, 270, 400],
-        label: 'Series C',
-        yAxisID: 'y-axis-1',
-      },
-    ];
-    this.userChartData.labels = [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-    ];
-    this.userChartData.optionslineChartOptions = {
-      responsive: true,
-      scales: {
-        // We use this empty structure as a placeholder for dynamic theming.
-        xAxes: [{}],
-        yAxes: [
-          {
-            id: 'y-axis-0',
-            position: 'left',
-          },
-          {
-            id: 'y-axis-1',
-            position: 'right',
-            gridLines: {
-              color: 'rgba(255,0,0,0.3)',
-            },
-            ticks: {
-              fontColor: 'red',
-            },
-          },
-        ],
-      },
-      annotation: {
-        annotations: [
-          {
-            type: 'line',
-            mode: 'vertical',
-            scaleID: 'x-axis-0',
-            value: 'March',
-            borderColor: 'orange',
-            borderWidth: 2,
-            label: {
-              enabled: true,
-              fontColor: 'orange',
-              content: 'LineAnno',
-            },
-          },
-        ],
-      },
-    };
+  getBlogs() {
+    this.blogservice.getAllBlogs().subscribe((data) => {
+      console.log(data);
+      this.blogsList = data;
+      this.prepareBlogData(this.blogsList);
+    });
+  }
 
-    this.userChartData.legend = true;
-    this.userChartData.chartType = 'line';
+  drawchart(id, datapoints, title, unit, xlabel) {
+    var chart = new CanvasJS.Chart(id, {
+      animationEnabled: true,
+      theme: 'light2',
+      title: {
+        text: title,
+      },
+      axisY: {
+        title: xlabel,
+        titleFontSize: 24,
+      },
+      data: [
+        {
+          type: 'column',
+          yValueFormatString: `#,### ${unit}`,
+          dataPoints: datapoints,
+        },
+      ],
+    });
+    chart.render();
+  }
+
+  prepareRegData(users) {
+    this.getDatewiseValues(users, 'created').subscribe((data) => {
+      console.log(data);
+      let regData = data;
+      this.drawchart(
+        'regByDate',
+        regData,
+        'Registration Data',
+        'registration(s)',
+        'No. of Registrations'
+      );
+    });
+  }
+
+  prepareBlogData(blogs) {
+    this.getDatewiseValues(blogs, 'created').subscribe((data) => {
+      console.log(data);
+      let regData = data;
+      this.drawchart(
+        'blogByDate',
+        regData,
+        'Blogs Data',
+        'blog(s) created',
+        'No. of Blogs'
+      );
+    });
+  }
+
+  getDatewiseValues(records, colname) {
+    console.log(records);
+    return Observable.create((observer) => {
+      let datewise = [];
+      this.getUniqueValues(colname, records).subscribe((unique_values) => {
+        for (let value of unique_values[1]) {
+          console.log(value);
+          datewise.push({
+            x: new Date(value),
+            y: this.getCount(unique_values[0], value),
+          });
+        }
+        observer.next(datewise);
+      });
+    });
+  }
+
+  getUniqueValues(col_name, data) {
+    // console.log(col_name+' '+data);
+    return Observable.create((observer) => {
+      let values = data.map((ele) => {
+        let date = new Date(ele[col_name]).setHours(0, 0, 0, 0);
+        // console.log(new Date(date).getTime());
+        return new Date(date).getTime();
+      });
+
+      let uniquevalues = [];
+      for (let value of values) {
+        if (!uniquevalues.includes(value)) {
+          uniquevalues.push(value);
+          // console.log(value);
+        }
+      }
+      observer.next([values, uniquevalues]);
+    });
+  }
+
+  getCount(records, item) {
+    let count = 0;
+    for (let record of records) {
+      if (record == item) {
+        count++;
+      }
+    }
+
+    return count;
   }
 }

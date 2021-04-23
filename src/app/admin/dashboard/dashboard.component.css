@@ -5,3 +5,9 @@
   height: 6rem;
   padding: 0.5rem;
 }
+
+.figure {
+  font-size: 7rem;
+  font-weight: bolder;
+  margin-top: 2.5rem;
+}
