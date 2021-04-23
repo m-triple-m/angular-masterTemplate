@@ -26,6 +26,7 @@
     "@nebular/theme": "^6.2.2",
     "@sweetalert2/ngx-sweetalert2": "^9.0.0",
     "chart.js": "^2.9.3",
+    "datalib": "^1.9.3",
     "eva-icons": "^1.1.2",
     "ng2-charts": "^2.3.0",
     "ngx-markdown": "^11.1.2",
