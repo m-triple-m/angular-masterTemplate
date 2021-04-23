@@ -3695,3 +3695,13 @@ body.is-menu-visible #menu {
 nb-action {
   cursor: pointer;
 }
+
+.main-cards {
+  margin-top: -13rem;
+}
+
+@media screen and (max-width: 1000px) {
+  .main-cards {
+    margin-top: 0;
+  }
+}

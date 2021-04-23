@@ -3,7 +3,7 @@ const api_config = require('./config');
 
 const url = api_config.conn_url;
 
-mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
     .then(() => { console.log('database successfully connected') })
     .catch(err => console.error(err));
 

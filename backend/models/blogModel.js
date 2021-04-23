@@ -8,7 +8,7 @@ const schema = mongoose.Schema({
     thumb: String,
     data: Object,
     likes: Number,
-    comments: Array,
+    comments: [{ type: mongoose.Types.ObjectId, ref: 'Comments' }],
     tags: Array
 })
 

@@ -57,7 +57,7 @@ export class CreateBlogComponent implements OnInit {
         created: new Date(),
         data: {},
         likes: 0,
-        comments: null,
+        comments: [],
         tags: null,
       });
     }

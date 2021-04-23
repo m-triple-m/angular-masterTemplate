@@ -36,10 +36,20 @@
         </article>
 
         <div class="comment-section">
-            <mat-form-field class="w-100">
-                <textarea matInput></textarea>
-            </mat-form-field>
-            <button nbButton>Add Comment</button>
+            <div class="comment-form" *ngIf="userservice.loggedin">
+                <mat-form-field class="w-100">
+                    <textarea matInput style="border-radius: 5px;" rows="5" #commenttext></textarea>
+                </mat-form-field>
+                <button nbButton hero status="primary" (click)="addComment(commenttext.value)">Add Comment</button>
+            </div>
+
+            <div class="comment-list">
+                <div class="comment" *ngFor="let comment of blogData.comments">
+                    <h2>{{comment.text}}</h2>
+                    <p>{{comment.creaed | date}}</p>
+                </div>
+            </div>
+
         </div>
 
 </div>

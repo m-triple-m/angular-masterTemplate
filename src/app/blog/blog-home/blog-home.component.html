@@ -9,7 +9,7 @@
     </section>
 
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-sm-3 col-sm-push-9">
             <!-- Sidebar -->
             <section id="sidebar">
                 <!-- Mini Posts -->
@@ -23,7 +23,8 @@
                                 <time class="published">{{blog.created | date}}</time>
                                 <a [routerLink]="['/blog/view', blog._id]" class="author"><img [src]="url+blog.author.avatar" alt="" /></a>
                             </header>
-                            <a [routerLink]="['/blog/view', blog._id]" class="image"><img [src]="url+blog.thumb" alt="" /></a>
+                    <div class="thumbnail" [ngStyle]="{background: 'url('+url+blog.thumb+') no-repeat top', height: '10rem', backgroundSize: 'cover'}"></div>
+
                         </article>
     
                     </div>
@@ -107,7 +108,7 @@
             </section>
     
         </div>
-        <div class="col-md">
+        <div class="col-sm-9 col-sm-pull-3 main-cards">
             <!-- Main -->
 
             <nb-search type="rotate-layout" placeholder="Search Blog..."></nb-search>

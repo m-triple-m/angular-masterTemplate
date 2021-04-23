@@ -30,6 +30,7 @@ router.get('/getbyid/:id', (req, res) => {
 
     Model.findById(req.params.id)
         .populate('author')
+        .populate('comments')
         .then(data => {
             console.log('blog details fetched');
             res.status(200).json(data);
@@ -51,10 +52,22 @@ router.post('/add', (req, res) => {
         })
 })
 
-router.put('/updatelike/:id', (req, res) => {
+router.put('/update/:id', (req, res) => {
     Model.findByIdAndUpdate(req.params.id, req.body)
         .then(data => {
-            console.log('blog likes updated');
+            console.log('blog updated');
+            res.status(200).json({ message: 'success' });
+        })
+        .catch(err => {
+            console.error(err);
+            res.status(500).json(err);
+        })
+})
+
+router.put('/updatecomment/:id', (req, res) => {
+    Model.findByIdAndUpdate(req.params.id, { $push: req.body })
+        .then(data => {
+            console.log('blog comments updated');
             res.status(200).json({ message: 'success' });
         })
         .catch(err => {

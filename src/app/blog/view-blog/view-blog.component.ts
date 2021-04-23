@@ -45,4 +45,13 @@ export class ViewBlogComponent implements OnInit {
   alreadyLiked(liked_users) {
     return liked_users.includes(this.userservice.currentUser._id);
   }
+
+  addComment(text) {
+    let obj = {};
+    obj['text'] = text;
+    obj['user'] = this.userservice.currentUser._id;
+    obj['created'] = new Date();
+    this.blogData.comments.push(obj);
+    this.blogService.addUserComment(this.blogData._id, obj);
+  }
 }
